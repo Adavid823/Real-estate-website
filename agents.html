@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agents - DreamHomes</title>
+  <link rel="stylesheet" href="agents.css" />
+</head>
+<body>
+  <header id="dynamicHeader"></header>
+
+  <section class="agents">
+    <h2>Meet Our Agents</h2>
+    <div class="agent-container" id="agentContainer">
+      <!-- Agents will be loaded dynamically here -->
+    </div>
+  </section>
+
+  <script>
+    function injectNavbar() {
+  const header = document.getElementById('dynamicHeader');
+  if (header) {
+    header.innerHTML = `
+      <nav class="navbar">
+        <div class="logo">DreamHomes</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listing.html">Listings</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">sign out</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+      </nav>
+    `;
+  }
+}
+
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('active');
+}
+
+const agents = [
+  {
+    name: "Sarah Johnson",
+    role: "Senior Agent",
+    img: "c2.jpeg"
+  },
+  {
+    name: "Michael Smith",
+    role: "Luxury Specialist",
+    img: "c1.jpeg"
+  },
+  {
+    name: "Emily Davis",
+    role: "Commercial Expert",
+    img: "c3.jpeg"
+  }
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  injectNavbar();
+
+  setTimeout(() => {
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) hamburger.addEventListener("click", toggleMenu);
+  }, 0);
+
+  const agentContainer = document.getElementById("agentContainer");
+  if (agentContainer) {
+    agents.forEach(agent => {
+      const card = document.createElement("div");
+      card.className = "agent-card";
+      card.innerHTML = `
+        <img src="${agent.img}" alt="${agent.name}">
+        <h3>${agent.name}</h3>
+        <p>${agent.role}</p>
+      `;
+      agentContainer.appendChild(card);
+    });
+  }
+});
+
+  </script>
+</body>
+</html>

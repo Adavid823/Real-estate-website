@@ -1,0 +1,184 @@
+/* Navbar styles (same as before) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0e3d5c;
+  color: #fff;
+  padding: 20px;
+  position: relative;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #0e3d5c;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+    z-index: 10;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Contact Section */
+.contact-section {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px 50px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contact-section h2 {
+  text-align: center;
+  color: #0e3d5c;
+  margin-bottom: 40px;
+  font-size: 32px;
+}
+
+.contact-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Contact Form */
+.contact-form {
+  flex: 1 1 350px;
+  min-width: 300px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #0e3d5c;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1.5px solid #0e3d5c;
+  border-radius: 8px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+}
+
+.contact-form button {
+  background: #0e3d5c;
+  color: white;
+  border: none;
+  padding: 15px 0;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #08304a;
+}
+
+#formMessage {
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+  color: green;
+}
+
+/* Agents Contact List */
+.agents-contact {
+  flex: 1 1 300px;
+  min-width: 280px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #0e3d5c;
+}
+
+.agents-contact h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+.agent-contact-card {
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.agent-contact-card h4 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.agent-contact-card p {
+  margin: 4px 0;
+  font-size: 15px;
+}
+
+.agent-contact-card a {
+  color: #0e3d5c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.agent-contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+

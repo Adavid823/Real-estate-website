@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - DreamHomes</title>
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+  <header id="dynamicHeader"></header>
+
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+
+    <div class="contact-content">
+
+      <!-- Contact Form -->
+      <form id="contactForm" class="contact-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+        <button type="submit">Send Message</button>
+
+        <div id="formMessage"></div>
+      </form>
+
+      <!-- Agents Contact List -->
+      <div class="agents-contact">
+        <h3>Contact Our Agents</h3>
+
+        <div class="agent-contact-card">
+          <h4>Sarah Johnson</h4>
+          <p>Senior Agent</p>
+          <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+          <p>Email: <a href="mailto:sarah.johnson@example.com">sarah.johnson@example.com</a></p>
+        </div>
+
+        <div class="agent-contact-card">
+          <h4>Michael Smith</h4>
+          <p>Luxury Specialist</p>
+          <p>Phone: <a href="tel:+1987654321">+1 987 654 321</a></p>
+          <p>Email: <a href="mailto:michael.smith@example.com">michael.smith@example.com</a></p>
+        </div>
+
+        <div class="agent-contact-card">
+          <h4>Emily Davis</h4>
+          <p>Commercial Expert</p>
+          <p>Phone: <a href="tel:+1122334455">+1 122 334 455</a></p>
+          <p>Email: <a href="mailto:emily.davis@example.com">emily.davis@example.com</a></p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    function injectNavbar() {
+  const header = document.getElementById('dynamicHeader');
+  if (header) {
+    header.innerHTML = `
+      <nav class="navbar">
+        <div class="logo">DreamHomes</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listing.html">Listings</a></li>
+          <li><a href="agent.html">Agents</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+      </nav>
+    `;
+  }
+}
+
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('active');
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  injectNavbar();
+
+  const hamburger = document.getElementById('hamburger');
+  if (hamburger) hamburger.addEventListener("click", toggleMenu);
+
+  // Contact form submission handler
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const message = this.message.value.trim();
+      const formMessage = document.getElementById('formMessage');
+
+      if (name && email && message) {
+        formMessage.style.color = "green";
+        formMessage.textContent = "Thank you, your message has been sent!";
+        this.reset();
+      } else {
+        formMessage.style.color = "red";
+        formMessage.textContent = "Please fill in all fields.";
+      }
+    });
+  }
+});
+
+  </script>
+</body>
+</html>

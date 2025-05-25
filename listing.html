@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Property Listings - DreamHomes</title>
+  <link rel="stylesheet" href="listings.css" />
+</head>
+<body>
+  <header>
+    <!-- navbar.html -->
+<nav class="navbar">
+  <div class="logo">DreamHomes</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="listing.html">Listings</a></li>
+    <li><a href="agent.html">Agents</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="login.html">Login</a></li>
+     <li><a href="signup.html" class="auth-link">Sign Up</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+</nav>
+
+  </header>
+
+  <section class="listings">
+    <h2>Available Properties</h2>
+    <div class="cards-container">
+      <div class="card">
+        <img src="villa.jpeg" alt="House 1">
+        <div class="card-content">
+          <h3>Modern Villa</h3>
+          <p>4 Beds • 3 Baths • 2500 sqft</p>
+          <p class="price">$420,000</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="city.jpeg" alt="House 2">
+        <div class="card-content">
+          <h3>City Apartment</h3>
+          <p>2 Beds • 2 Baths • 1200 sqft</p>
+          <p class="price">$260,000</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="cozy.jpeg" alt="House 3">
+        <div class="card-content">
+          <h3>Cozy Cottage</h3>
+          <p>3 Beds • 2 Baths • 1500 sqft</p>
+          <p class="price">$310,000</p>
+        </div>
+      </div>
+      
+            <div class="card">
+        <img src="car.jpg" alt="car">
+        <div class="card-content">
+          <h3>porsche car</h3>
+          <p>porsche, speed : 320 m/s</p>
+          <p class="price">$210,000</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+function injectNavbar() {
+  const header = document.getElementById('dynamicHeader');
+  if (header) {
+    header.innerHTML = `
+      <nav class="navbar">
+        <div class="logo">DreamHomes</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listing.html">Listings</a></li>
+          <li><a href="agent">Agents</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+      </nav>
+    `;
+  }
+}
+
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('active');
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  injectNavbar();
+
+  // Bind menu toggle after navbar is injected
+  setTimeout(() => {
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) hamburger.addEventListener("click", toggleMenu);
+  }, 0);
+
+  // Optional: render listings if on listings.html
+  const container = document.getElementById("propertyContainer");
+  if (container) {
+    const properties = [
+      {
+        title: "Modern Villa",
+        img: "images/house1.jpg",
+        features: "4 Beds • 3 Baths • 2500 sqft",
+        price: "$420,000"
+      },
+      {
+        title: "City Apartment",
+        img: "images/house2.jpg",
+        features: "2 Beds • 2 Baths • 1200 sqft",
+        price: "$260,000"
+      },
+      {
+        title: "Cozy Cottage",
+        img: "images/house3.jpg",
+        features: "3 Beds • 2 Baths • 1500 sqft",
+        price: "$310,000"
+      }
+    ];
+
+    properties.forEach(prop => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${prop.img}" alt="${prop.title}">
+        <div class="card-content">
+          <h3>${prop.title}</h3>
+          <p>${prop.features}</p>
+          <p class="price">${prop.price}</p>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+});
+
+  </script>
+</body>
+</html>

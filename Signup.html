@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - DreamHomes</title>
+  <link rel="stylesheet" href="signup.css" />
+</head>
+<body>
+  <header id="dynamicHeader"></header>
+  <div class="form-container">
+    <h2>Create an Account</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+      <p>Already have an account? <a href="login.html">Login</a></p>
+    </form>
+  </div>
+  
+  <script>
+    function injectNavbar() {
+  const header = document.getElementById('dynamicHeader');
+  if (header) {
+    header.innerHTML = `
+      <nav class="navbar">
+        <div class="logo">DreamHomes</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listing.html">Listings</a></li>
+          <li><a href="agent.html">Agents</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+      </nav>
+    `;
+  }
+}
+
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('active');
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  injectNavbar();
+
+  const hamburger = document.getElementById('hamburger');
+  if (hamburger) hamburger.addEventListener("click", toggleMenu);
+
+  // Contact form submission handler
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const message = this.message.value.trim();
+      const formMessage = document.getElementById('formMessage');
+
+      if (name && email && message) {
+        formMessage.style.color = "green";
+        formMessage.textContent = "Thank you, your message has been sent!";
+        this.reset();
+      } else {
+        formMessage.style.color = "red";
+        formMessage.textContent = "Please fill in all fields.";
+      }
+    });
+  }
+});
+
+  </script>
+</body>
+</html>

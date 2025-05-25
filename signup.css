@@ -1,0 +1,101 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #e6f2ff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar styles (same as before) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0e3d5c;
+  color: #fff;
+  padding: 20px;
+  position: relative;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #0e3d5c;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+    z-index: 10;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+
+.form-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  color: #0066cc;
+}
+
+form input, form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background: #0066cc;
+  color: white;
+  border: none;
+}
+
+form button:hover {
+  background: #004d99;
+}
+
+form p {
+  text-align: center;
+  margin-top: 15px;
+}
